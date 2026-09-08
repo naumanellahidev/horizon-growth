@@ -8,3 +8,6 @@ next-env.d.ts
 # Playwright / QA artifacts
 screenshots/
 test-results/
+
+.vercel
+.env*
