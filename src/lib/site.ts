@@ -28,6 +28,22 @@ export const site = {
   },
   hours: "Mon – Fri, 9:00am – 6:00pm ET",
   responseTime: "Under 1 business day",
+  /** Approximate coordinates for the Jackson Heights office, used in LocalBusiness schema. */
+  geo: { latitude: 40.7489, longitude: -73.8912 },
+} as const;
+
+/** Google Maps links derived from the address — never hardcoded elsewhere. */
+export const mapsQuery = encodeURIComponent(
+  `${site.name}, ${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`,
+);
+export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+export const mapsEmbedUrl = `https://maps.google.com/maps?q=${mapsQuery}&z=15&output=embed`;
+
+/** Build credit shown at the very bottom of the footer. */
+export const credit = {
+  label: "Designed & Developed by",
+  name: "Nauman Ellahi",
+  href: "https://naumanellahi.com",
 } as const;
 
 export const addressLine = `${site.address.street}, ${site.address.locality}, ${site.address.region} ${site.address.postalCode}`;
@@ -60,6 +76,7 @@ export const primaryNav: NavItem[] = [
     href: "/about",
     children: [
       { label: "Services", href: "/services" },
+      { label: "Locations", href: "/locations" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
     ],
@@ -67,13 +84,12 @@ export const primaryNav: NavItem[] = [
 ];
 
 export const footerLegalNav = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Careers", href: "/careers" },
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms of Service", href: "/terms-of-service" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Accessibility", href: "/accessibility" },
   { label: "Disclaimer", href: "/disclaimer" },
-  { label: "Contact", href: "/contact" },
+  { label: "Sitemap", href: "/sitemap" },
 ];
 
 /** Service areas used for local SEO copy and LocalBusiness schema. */

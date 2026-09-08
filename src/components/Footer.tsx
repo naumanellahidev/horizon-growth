@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { footerLegalNav, site, socials } from "@/lib/site";
+import { credit, footerLegalNav, site, socials } from "@/lib/site";
+import { locations } from "@/lib/locations";
 import { services } from "@/lib/services";
 import { socialIcons } from "./Icons";
 
@@ -67,9 +68,23 @@ export default function Footer() {
               <ul>
                 <li><Link href="/about">About Us</Link></li>
                 <li><Link href="/case-studies">Case Studies</Link></li>
+                <li><Link href="/locations">Service Areas</Link></li>
                 <li><Link href="/careers">Careers</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
-                <li><Link href="/services">All Services</Link></li>
+                <li><Link href="/sitemap">Sitemap</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer__col">
+              <h4>Service Areas</h4>
+              <ul>
+                {locations.map((l) => (
+                  <li key={l.slug}>
+                    <Link href={`/locations/${l.slug}`}>
+                      Digital Marketing in {l.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -93,7 +108,8 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p style={{ margin: 0 }}>
-            &copy; {year} {site.name} &ndash; Digital Marketing Agency in Queens, New York.
+            &copy; {year} {site.name} &ndash; Digital Marketing Agency in Queens, New
+            York. All rights reserved.
           </p>
           <ul className="footer__legal">
             {footerLegalNav.map((l) => (
@@ -102,6 +118,15 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="footer__credit">
+          <p style={{ margin: 0 }}>
+            {credit.label}:{" "}
+            <a href={credit.href} target="_blank" rel="noopener noreferrer">
+              {credit.name}
+            </a>
+          </p>
         </div>
       </div>
     </footer>

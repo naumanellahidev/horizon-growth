@@ -3,6 +3,7 @@ import { Mona_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import { site } from "@/lib/site";
 import { localBusinessSchema, organizationSchema, websiteSchema } from "@/lib/seo";
 import "./globals.css";
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <WhatsAppWidget />
         <JsonLd schemas={[organizationSchema(), localBusinessSchema(), websiteSchema()]} />
       </body>
     </html>

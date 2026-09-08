@@ -7,7 +7,7 @@ import OfficeSection from "@/components/OfficeSection";
 import { SectionHead } from "@/components/ContentBlocks";
 import { Clock, Mail, MapPin, Phone } from "@/components/Icons";
 import { breadcrumbSchema, buildMetadata, faqSchema } from "@/lib/seo";
-import { site, socials } from "@/lib/site";
+import { mapsEmbedUrl, mapsUrl, site, socials } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Our Queens, NY Digital Marketing Agency",
@@ -126,7 +126,33 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* ---------- Map ---------- */}
       <section className="section section--tint">
+        <div className="wide">
+          <SectionHead
+            eyebrow="Find Us"
+            title="Our Office In Jackson Heights, Queens"
+            text="Visits are by appointment so someone is actually here to meet you. The full address and phone number are listed above in text, not only inside the map."
+          />
+          <div className="map-embed">
+            <iframe
+              src={mapsEmbedUrl}
+              title={`Map showing ${site.name} at ${site.address.street}, ${site.address.locality}`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+          <p className="muted" style={{ fontSize: "var(--fs-small)", marginTop: "var(--sp-40)" }}>
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
+              Open in Google Maps
+            </a>{" "}
+            for directions.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="wide">
           <div className="section-head">
             <p className="eyebrow">Before You Write</p>

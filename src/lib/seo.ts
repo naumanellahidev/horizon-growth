@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site, addressLine, socials, serviceAreas } from "./site";
+import { site, socials, serviceAreas, mapsUrl } from "./site";
 import { services } from "./services";
 
 type MetaInput = {
@@ -92,6 +92,12 @@ export function localBusinessSchema() {
     email: site.email,
     telephone: site.phone,
     address: postalAddress,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.geo.latitude,
+      longitude: site.geo.longitude,
+    },
+    hasMap: mapsUrl,
     priceRange: "$$",
     areaServed: serviceAreas.map((name) => ({ "@type": "Place", name })),
     openingHoursSpecification: [
@@ -142,6 +148,35 @@ export function serviceSchema(input: {
     serviceType: input.name,
     provider: { "@id": `${site.url}/#organization` },
     areaServed: serviceAreas.map((name) => ({ "@type": "Place", name })),
+  };
+}
+
+/** Service schema scoped to a single local market, for /locations/[slug]. */
+export function localAreaServiceSchema(input: {
+  areaName: string;
+  path: string;
+  description: string;
+}) {
+  return {
+    "@type": "Service",
+    name: `Digital Marketing Services in ${input.areaName}`,
+    description: input.description,
+    url: `${site.url}${input.path}`,
+    serviceType: "Digital marketing agency",
+    provider: { "@id": `${site.url}/#organization` },
+    areaServed: { "@type": "Place", name: input.areaName },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `Services offered in ${input.areaName}`,
+      itemListElement: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.name,
+          url: `${site.url}/services/${s.slug}`,
+        },
+      })),
+    },
   };
 }
 
