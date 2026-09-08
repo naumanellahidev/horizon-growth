@@ -11,8 +11,7 @@ import { site, socials } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Our Queens, NY Digital Marketing Agency",
-  description:
-    "Talk to Horizon Growth Inc about SEO, PPC, web design or conversion optimization. Call +1 (347) 659-6527, email info@horizongrowth.us, or request a free consultation.",
+  description: `Talk to ${site.name} about SEO, PPC, web design or conversion optimization. Call ${site.phone}, email ${site.email}, or request a free consultation.`,
   path: "/contact",
 });
 

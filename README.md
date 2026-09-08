@@ -147,3 +147,21 @@ Photography is licensed stock from Unsplash, disclosed on `/disclaimer`.
   honoured for every animation.
 - **Analytics-ready:** the contact form posts JSON, so adding a conversion event
   is a one-line change in `ContactForm.tsx`.
+
+---
+
+## Visual QA
+
+`tools/qa-visual.mjs` loads every key page at desktop, tablet and mobile widths
+and reports horizontal overflow, broken images, console errors, failed requests
+and any scroll-reveal block that stayed hidden. It also writes screenshots to
+`screenshots/`.
+
+Playwright is intentionally **not** a project dependency, so it never touches
+the production build. Install it only when you want to run the check:
+
+```bash
+npm i -D playwright && npx playwright install chromium
+npm run build && npm start          # in one terminal
+node tools/qa-visual.mjs http://localhost:3000
+```
