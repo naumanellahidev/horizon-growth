@@ -70,6 +70,7 @@ export const primaryNav: NavItem[] = [
   { label: "SEO", href: "/services/seo" },
   { label: "PPC", href: "/services/ppc-management" },
   { label: "E-commerce", href: "/services/ecommerce-marketing" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Case Studies", href: "/case-studies" },
   {
     label: "About",

@@ -19,7 +19,7 @@ export const metadata: Metadata = buildMetadata({
 const engagementModel = [
   {
     title: "Start With A Diagnosis, Not A Package",
-    text: "We do not sell tiers. The first conversation is about what your numbers say, where demand actually exists in your category and which constraint is holding growth back. Sometimes that means we recommend less work than you expected.",
+    text: "Our plans and prices are published, but we never push a package before we understand the problem. The first conversation is about what your numbers say, where demand actually exists in your category and which constraint is holding growth back. Sometimes that means we recommend less work than you expected.",
     image: "strategySession" as const,
   },
   {
@@ -103,6 +103,9 @@ export default function ServicesPage() {
           <div className="btn-row btn-row--center">
             <Link href="/contact" className="btn btn--primary">
               Book a free consultation
+            </Link>
+            <Link href="/pricing" className="btn btn--outline">
+              View pricing &amp; plans
             </Link>
             <Link href="/case-studies" className="btn btn--outline">
               See our engagement blueprints

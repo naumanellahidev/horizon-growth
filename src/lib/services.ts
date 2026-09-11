@@ -281,7 +281,7 @@ export const services: Service[] = [
       },
       {
         q: "How is SEO pricing structured?",
-        a: "Monthly retainers scoped to the size of your site and the competitiveness of your market, with no long lock-in. We will give you a fixed proposal after reviewing your site, so you know the number before you commit.",
+        a: "Local SEO is included in all of our monthly plans, which start at $350 per month, and standalone SEO retainers start at $450 per month. Larger or more competitive sites are scoped individually — we give you a fixed proposal after reviewing your site, so you know the number before you commit. See our pricing page for full details.",
       },
       {
         q: "Will you work with our existing developers?",
@@ -655,7 +655,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What is the minimum ad budget you work with?",
-        a: "We generally need at least $2,500 per month in media spend for management to pay for itself. Below that, we will usually suggest a one-off setup and training engagement instead of an ongoing retainer.",
+        a: "Standalone PPC management starts at $399 per month and works best with at least $1,500 per month in media spend. Local businesses on smaller budgets can get Google Ads management as part of our Premium Plan at $699 per month. Ad spend is always paid directly to Google or Meta from your own account.",
       },
       {
         q: "Who owns the ad accounts?",
@@ -663,7 +663,7 @@ export const services: Service[] = [
       },
       {
         q: "How is your management fee structured?",
-        a: "A flat monthly fee based on account complexity, not a percentage of spend. We would rather not have a financial incentive to recommend a bigger budget than your results justify.",
+        a: "A flat monthly fee starting at $399, based on account complexity rather than a percentage of spend. We would rather not have a financial incentive to recommend a bigger budget than your results justify.",
       },
       {
         q: "How quickly will we see results?",

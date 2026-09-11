@@ -54,9 +54,13 @@ export default function Header() {
             ))}
           </ul>
 
-          <a className="header__phone" href={site.phoneHref}>
+          <a
+            className="header__phone"
+            href={site.phoneHref}
+            aria-label={`Call ${site.phone}`}
+            title={`Call ${site.phone}`}
+          >
             <Phone />
-            {site.phone}
           </a>
 
           <Link href="/contact" className="btn btn--primary header__cta">

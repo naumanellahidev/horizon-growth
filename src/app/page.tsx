@@ -14,6 +14,7 @@ import {
   ServiceCard,
   StatsBand,
 } from "@/components/ContentBlocks";
+import { PricingAssurances, PricingCards, ServicePriceGrid } from "@/components/Pricing";
 import { homeServices } from "@/lib/services";
 import { buildMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -37,6 +38,10 @@ const homeFaqs = [
   {
     q: "How do your engagements usually start?",
     a: "With a free 30-minute consultation. We look at what you are already running, what your numbers say, and whether we are genuinely the right fit. If we are not, we will tell you and point you somewhere better.",
+  },
+  {
+    q: "How much does digital marketing with Horizon Growth cost?",
+    a: "Our monthly plans start at $350 for the Starter Plan, $499 for the Growth Plan and $699 for the Premium Plan, with no setup fees. Individual services such as SEO, PPC management or a new website are also available on their own — full details are on our pricing page.",
   },
   {
     q: "Are we locked into a long contract?",
@@ -147,6 +152,35 @@ export default function HomePage() {
             <h2>Straightforward Terms, Set Out Up Front</h2>
           </div>
           <StatsBand items={commitments} />
+        </div>
+      </section>
+
+      {/* ---------- Pricing ---------- */}
+      <section className="section section--tint" id="pricing">
+        <div className="wide">
+          <SectionHead
+            center
+            eyebrow="Pricing & Plans"
+            title="Simple Monthly Plans. No Hidden Fees."
+            text="Transparent packages for local and growing businesses. Start where you are today and upgrade whenever you are ready."
+          />
+          <PricingCards />
+          <PricingAssurances />
+
+          <div className="section-head section-head--center" style={{ margin: "var(--sp-80) auto var(--sp-60)" }}>
+            <p className="eyebrow">Individual Services</p>
+            <h3 style={{ fontSize: "var(--fs-large)" }}>Only Need One Thing? Every Service Is Available On Its Own</h3>
+          </div>
+          <ServicePriceGrid compact />
+
+          <div className="btn-row btn-row--center" style={{ marginTop: "var(--sp-60)" }}>
+            <Link href="/pricing" className="btn btn--primary">
+              See full pricing &amp; compare plans
+            </Link>
+            <Link href="/contact" className="btn btn--outline">
+              Get a custom quote
+            </Link>
+          </div>
         </div>
       </section>
 

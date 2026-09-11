@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { planById, planOptionLabel, plans } from "@/lib/pricing";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -24,6 +25,14 @@ const budgets = [
 export default function ContactForm({ defaultService }: { defaultService?: string }) {
   const [status, setStatus] = useState<Status>({ state: "idle" });
   const [errors, setErrors] = useState<Errors>({});
+  const [service, setService] = useState(defaultService ?? "");
+
+  // Plan buttons link to /contact?plan=<id>. Read it on the client so the
+  // contact page itself can stay statically rendered.
+  useEffect(() => {
+    const plan = planById(new URLSearchParams(window.location.search).get("plan") ?? "");
+    if (plan) setService(planOptionLabel(plan));
+  }, []);
 
   function validate(data: FormData): Errors {
     const next: Errors = {};
@@ -68,6 +77,7 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
       if (res.ok && body.ok) {
         setStatus({ state: "sent" });
         form.reset();
+        setService("");
         return;
       }
 
@@ -158,13 +168,27 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
 
         <div className="field">
           <label htmlFor="cf-service">What do you need help with?</label>
-          <select id="cf-service" name="service" defaultValue={defaultService ?? ""}>
-            <option value="">Select a service</option>
-            {services.map((s) => (
-              <option key={s.slug} value={s.name}>
-                {s.name}
-              </option>
-            ))}
+          <select
+            id="cf-service"
+            name="service"
+            value={service}
+            onChange={(e) => setService(e.target.value)}
+          >
+            <option value="">Select a plan or service</option>
+            <optgroup label="Monthly plans">
+              {plans.map((p) => (
+                <option key={p.id} value={planOptionLabel(p)}>
+                  {planOptionLabel(p)}
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="Individual services">
+              {services.map((s) => (
+                <option key={s.slug} value={s.name}>
+                  {s.name}
+                </option>
+              ))}
+            </optgroup>
             <option value="Not sure yet">Not sure yet</option>
           </select>
         </div>

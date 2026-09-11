@@ -34,6 +34,7 @@ export default function SitemapPage() {
         { label: "Home", href: "/" },
         { label: "About Us", href: "/about" },
         { label: "All Services", href: "/services" },
+        { label: "Pricing & Plans", href: "/pricing" },
         { label: "Service Areas", href: "/locations" },
         { label: "Case Studies", href: "/case-studies" },
         { label: "Careers", href: "/careers" },
