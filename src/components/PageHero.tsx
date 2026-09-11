@@ -56,9 +56,12 @@ export default function PageHero({
   priority = false,
 }: Props) {
   const img = images[image];
+  // "Digital Marketing Agency · Queens, New York" -> two parts, so the home
+  // badge can drop the separator and stack cleanly on narrow screens.
+  const eyebrowParts = eyebrow?.split(" · ") ?? [];
 
   return (
-    <section className={`hero ${variant === "inner" ? "hero--inner" : ""}`.trim()}>
+    <section className={`hero hero--${variant}`}>
       <div className="hero__bg">
         <Image
           src={img.src}
@@ -75,7 +78,22 @@ export default function PageHero({
       <div className="wide">
         <div className="hero__inner">
           {crumbs && <Breadcrumbs items={crumbs} />}
-          {eyebrow && <p className="eyebrow eyebrow--light" style={{ justifyContent: "center" }}>{eyebrow}</p>}
+          {eyebrow && variant === "home" && (
+            <p className="hero__badge">
+              <span className="hero__badge-dot" aria-hidden="true" />
+              <span className="hero__badge-text">
+                {eyebrowParts.map((part, i) => (
+                  <span key={part}>
+                    {i > 0 && <span className="hero__badge-sep"> · </span>}
+                    <span className="hero__badge-part">{part}</span>
+                  </span>
+                ))}
+              </span>
+            </p>
+          )}
+          {eyebrow && variant === "inner" && (
+            <p className="eyebrow eyebrow--light" style={{ justifyContent: "center" }}>{eyebrow}</p>
+          )}
           <h1>{title}</h1>
           {subtitle && <p className="hero__sub">{subtitle}</p>}
           {text && <p className="hero__text">{text}</p>}
